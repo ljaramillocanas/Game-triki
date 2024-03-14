@@ -1,3 +1,4 @@
+import { useState } from "react"
 
 //Declaramos turnos
 const TURNS={
@@ -10,7 +11,7 @@ const TURNS={
 const board = Array(9).fill(null)
 
 //square o cuadrado del tablero
-const Square = ({children,updateBoard,index}) =>{
+const Square = ({children,updateBoard,index}) => {
   return(
     <div className="square">
       {children}
@@ -19,6 +20,10 @@ const Square = ({children,updateBoard,index}) =>{
 }
 
 function App(){
+  const [board,setBoard] = useState(Array(9).fill(null))
+
+  const [turn,setTurn] = useState (TURNS.X )
+
  return (
   <main className="board">
     <h1>TIC TAC TOE</h1>
@@ -30,12 +35,15 @@ function App(){
               key={index}
               index={index}
             >
-                
+                {board[index]}
             </Square> 
 
           )
         })
       }
+    </section>
+    <section className="turn">
+
     </section>
     </main>
   )
